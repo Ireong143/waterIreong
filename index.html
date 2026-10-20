@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>물만난광어</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage">
+    <div class="count" id="count" aria-live="polite">0</div>
+    <button class="face-btn" id="face" type="button" aria-label="물만난광어">
+      <img src="assets/face.png" alt="" draggable="false">
+    </button>
+  </main>
+
+  <div class="audio-ui">
+    <button class="mute-btn" id="mute" type="button" aria-label="소리 끄기/켜기">
+      <svg id="icon-on" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 9v6h4l5 4V5L7 9H3z"/>
+        <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <svg id="icon-off" viewBox="0 0 24 24" aria-hidden="true" hidden>
+        <path d="M3 9v6h4l5 4V5L7 9H3z"/>
+        <path d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <input class="volume" id="volume" type="range" min="0" max="100" value="50" aria-label="볼륨">
+  </div>
+
+  <audio id="bgm" src="assets/bgm.mp3" loop preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

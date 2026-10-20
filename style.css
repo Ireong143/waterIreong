@@ -1,0 +1,104 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* 얼굴: 화면 정중앙 */
+.face-btn {
+  position: relative;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: min(62vh, 82vw * 1.54);
+  aspect-ratio: 900 / 1386;
+  transition: transform .08s ease-out;
+  outline: none;
+}
+.face-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+.face-btn.press { transform: scale(.94); }
+
+/* 누른 횟수: 얼굴 위 */
+.count {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - min(62vh, 82vw * 1.54) / 2 - 14px);
+  transform: translate(-50%, -100%);
+  color: #fff;
+  font: 800 clamp(36px, 8vh, 80px) / 1 system-ui, -apple-system, "Pretendard", "Noto Sans KR", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.count.bump { animation: bump .15s ease-out; }
+@keyframes bump {
+  0%   { transform: translate(-50%, -100%) scale(1); }
+  50%  { transform: translate(-50%, -100%) scale(1.25); }
+  100% { transform: translate(-50%, -100%) scale(1); }
+}
+
+/* 소리 컨트롤 */
+.audio-ui {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,.1);
+  border-radius: 999px;
+}
+.mute-btn {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+.mute-btn svg { width: 24px; height: 24px; fill: currentColor; }
+.mute-btn [hidden] { display: none; }
+
+.volume {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 110px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #fff var(--v, 50%), rgba(255,255,255,.3) var(--v, 50%));
+  outline: none;
+  cursor: pointer;
+}
+.volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 0;
+}
+.volume::-moz-range-thumb {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 0;
+}
